@@ -1,0 +1,643 @@
+Archive member included to satisfy reference by file (symbol)
+
+/usr/lib/gcc-cross/i686-linux-gnu/11/libgcc.a(_udivdi3.o)
+                              /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/stdio.obj (__udivdi3)
+/usr/lib/gcc-cross/i686-linux-gnu/11/libgcc.a(_umoddi3.o)
+                              /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/stdio.obj (__umoddi3)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/asm/arch/i686/gdt.obj
+LOAD /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/asm/arch/i686/idt.obj
+LOAD /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/asm/arch/i686/io.obj
+LOAD /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/asm/arch/i686/isr.obj
+LOAD /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/commands.obj
+LOAD /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/main.obj
+LOAD /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/memory.obj
+LOAD /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/stdio.obj
+LOAD /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/hal/hal.obj
+LOAD /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/gdt.obj
+LOAD /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/idt.obj
+LOAD /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/io.obj
+LOAD /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/irq.obj
+LOAD /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isr.obj
+LOAD /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isrs_gen.obj
+LOAD /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/keyboard.obj
+LOAD /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/pic.obj
+LOAD /usr/lib/gcc-cross/i686-linux-gnu/11/libgcc.a
+                0x0000000000100000                phys = 0x100000
+                0x0000000000100000                . = phys
+
+.entry          0x0000000000100000       0x49
+                0x0000000000100000                __entry_start = .
+ *(.entry)
+ .entry         0x0000000000100000       0x49 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/main.obj
+                0x0000000000100000                start
+
+.text           0x0000000000100050     0x3451
+                0x0000000000100050                __text_start = .
+ *(.text)
+ .text          0x0000000000100050       0x25 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/asm/arch/i686/gdt.obj
+                0x0000000000100050                i686_GDT_Load
+ *fill*         0x0000000000100075        0xb 
+ .text          0x0000000000100080        0xd /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/asm/arch/i686/idt.obj
+                0x0000000000100080                i686_IDT_Load
+ *fill*         0x000000000010008d        0x3 
+ .text          0x0000000000100090       0x1d /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/asm/arch/i686/io.obj
+                0x0000000000100090                i686_outb
+                0x000000000010009b                i686_inb
+                0x00000000001000a4                i686_Panic
+                0x00000000001000a6                i686_EnableInterrupts
+                0x00000000001000a8                i686_DisableInterrupts
+                0x00000000001000aa                crash_me
+ *fill*         0x00000000001000ad        0x3 
+ .text          0x00000000001000b0      0xa6d /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/asm/arch/i686/isr.obj
+                0x00000000001000b0                i686_ISR0
+                0x00000000001000b9                i686_ISR1
+                0x00000000001000c2                i686_ISR2
+                0x00000000001000cb                i686_ISR3
+                0x00000000001000d4                i686_ISR4
+                0x00000000001000dd                i686_ISR5
+                0x00000000001000e6                i686_ISR6
+                0x00000000001000ef                i686_ISR7
+                0x00000000001000f8                i686_ISR8
+                0x00000000001000ff                i686_ISR9
+                0x0000000000100108                i686_ISR10
+                0x000000000010010f                i686_ISR11
+                0x0000000000100116                i686_ISR12
+                0x000000000010011d                i686_ISR13
+                0x0000000000100124                i686_ISR14
+                0x000000000010012b                i686_ISR15
+                0x0000000000100134                i686_ISR16
+                0x000000000010013d                i686_ISR17
+                0x0000000000100144                i686_ISR18
+                0x000000000010014d                i686_ISR19
+                0x0000000000100156                i686_ISR20
+                0x000000000010015f                i686_ISR21
+                0x0000000000100166                i686_ISR22
+                0x000000000010016f                i686_ISR23
+                0x0000000000100178                i686_ISR24
+                0x0000000000100181                i686_ISR25
+                0x000000000010018a                i686_ISR26
+                0x0000000000100193                i686_ISR27
+                0x000000000010019c                i686_ISR28
+                0x00000000001001a5                i686_ISR29
+                0x00000000001001ae                i686_ISR30
+                0x00000000001001b7                i686_ISR31
+                0x00000000001001c0                i686_ISR32
+                0x00000000001001c9                i686_ISR33
+                0x00000000001001d2                i686_ISR34
+                0x00000000001001db                i686_ISR35
+                0x00000000001001e4                i686_ISR36
+                0x00000000001001ed                i686_ISR37
+                0x00000000001001f6                i686_ISR38
+                0x00000000001001ff                i686_ISR39
+                0x0000000000100208                i686_ISR40
+                0x0000000000100211                i686_ISR41
+                0x000000000010021a                i686_ISR42
+                0x0000000000100223                i686_ISR43
+                0x000000000010022c                i686_ISR44
+                0x0000000000100235                i686_ISR45
+                0x000000000010023e                i686_ISR46
+                0x0000000000100247                i686_ISR47
+                0x0000000000100250                i686_ISR48
+                0x0000000000100259                i686_ISR49
+                0x0000000000100262                i686_ISR50
+                0x000000000010026b                i686_ISR51
+                0x0000000000100274                i686_ISR52
+                0x000000000010027d                i686_ISR53
+                0x0000000000100286                i686_ISR54
+                0x000000000010028f                i686_ISR55
+                0x0000000000100298                i686_ISR56
+                0x00000000001002a1                i686_ISR57
+                0x00000000001002aa                i686_ISR58
+                0x00000000001002b3                i686_ISR59
+                0x00000000001002bc                i686_ISR60
+                0x00000000001002c5                i686_ISR61
+                0x00000000001002ce                i686_ISR62
+                0x00000000001002d7                i686_ISR63
+                0x00000000001002e0                i686_ISR64
+                0x00000000001002e9                i686_ISR65
+                0x00000000001002f2                i686_ISR66
+                0x00000000001002fb                i686_ISR67
+                0x0000000000100304                i686_ISR68
+                0x000000000010030d                i686_ISR69
+                0x0000000000100316                i686_ISR70
+                0x000000000010031f                i686_ISR71
+                0x0000000000100328                i686_ISR72
+                0x0000000000100331                i686_ISR73
+                0x000000000010033a                i686_ISR74
+                0x0000000000100343                i686_ISR75
+                0x000000000010034c                i686_ISR76
+                0x0000000000100355                i686_ISR77
+                0x000000000010035e                i686_ISR78
+                0x0000000000100367                i686_ISR79
+                0x0000000000100370                i686_ISR80
+                0x0000000000100379                i686_ISR81
+                0x0000000000100382                i686_ISR82
+                0x000000000010038b                i686_ISR83
+                0x0000000000100394                i686_ISR84
+                0x000000000010039d                i686_ISR85
+                0x00000000001003a6                i686_ISR86
+                0x00000000001003af                i686_ISR87
+                0x00000000001003b8                i686_ISR88
+                0x00000000001003c1                i686_ISR89
+                0x00000000001003ca                i686_ISR90
+                0x00000000001003d3                i686_ISR91
+                0x00000000001003dc                i686_ISR92
+                0x00000000001003e5                i686_ISR93
+                0x00000000001003ee                i686_ISR94
+                0x00000000001003f7                i686_ISR95
+                0x0000000000100400                i686_ISR96
+                0x0000000000100409                i686_ISR97
+                0x0000000000100412                i686_ISR98
+                0x000000000010041b                i686_ISR99
+                0x0000000000100424                i686_ISR100
+                0x000000000010042d                i686_ISR101
+                0x0000000000100436                i686_ISR102
+                0x000000000010043f                i686_ISR103
+                0x0000000000100448                i686_ISR104
+                0x0000000000100451                i686_ISR105
+                0x000000000010045a                i686_ISR106
+                0x0000000000100463                i686_ISR107
+                0x000000000010046c                i686_ISR108
+                0x0000000000100475                i686_ISR109
+                0x000000000010047e                i686_ISR110
+                0x0000000000100487                i686_ISR111
+                0x0000000000100490                i686_ISR112
+                0x0000000000100499                i686_ISR113
+                0x00000000001004a2                i686_ISR114
+                0x00000000001004ab                i686_ISR115
+                0x00000000001004b4                i686_ISR116
+                0x00000000001004bd                i686_ISR117
+                0x00000000001004c6                i686_ISR118
+                0x00000000001004cf                i686_ISR119
+                0x00000000001004d8                i686_ISR120
+                0x00000000001004e1                i686_ISR121
+                0x00000000001004ea                i686_ISR122
+                0x00000000001004f3                i686_ISR123
+                0x00000000001004fc                i686_ISR124
+                0x0000000000100505                i686_ISR125
+                0x000000000010050e                i686_ISR126
+                0x0000000000100517                i686_ISR127
+                0x0000000000100520                i686_ISR128
+                0x000000000010052c                i686_ISR129
+                0x0000000000100538                i686_ISR130
+                0x0000000000100544                i686_ISR131
+                0x0000000000100550                i686_ISR132
+                0x000000000010055c                i686_ISR133
+                0x0000000000100568                i686_ISR134
+                0x0000000000100574                i686_ISR135
+                0x0000000000100580                i686_ISR136
+                0x000000000010058c                i686_ISR137
+                0x0000000000100598                i686_ISR138
+                0x00000000001005a4                i686_ISR139
+                0x00000000001005b0                i686_ISR140
+                0x00000000001005bc                i686_ISR141
+                0x00000000001005c8                i686_ISR142
+                0x00000000001005d4                i686_ISR143
+                0x00000000001005e0                i686_ISR144
+                0x00000000001005ec                i686_ISR145
+                0x00000000001005f8                i686_ISR146
+                0x0000000000100604                i686_ISR147
+                0x0000000000100610                i686_ISR148
+                0x000000000010061c                i686_ISR149
+                0x0000000000100628                i686_ISR150
+                0x0000000000100634                i686_ISR151
+                0x0000000000100640                i686_ISR152
+                0x000000000010064c                i686_ISR153
+                0x0000000000100658                i686_ISR154
+                0x0000000000100664                i686_ISR155
+                0x0000000000100670                i686_ISR156
+                0x000000000010067c                i686_ISR157
+                0x0000000000100688                i686_ISR158
+                0x0000000000100694                i686_ISR159
+                0x00000000001006a0                i686_ISR160
+                0x00000000001006ac                i686_ISR161
+                0x00000000001006b8                i686_ISR162
+                0x00000000001006c4                i686_ISR163
+                0x00000000001006d0                i686_ISR164
+                0x00000000001006dc                i686_ISR165
+                0x00000000001006e8                i686_ISR166
+                0x00000000001006f4                i686_ISR167
+                0x0000000000100700                i686_ISR168
+                0x000000000010070c                i686_ISR169
+                0x0000000000100718                i686_ISR170
+                0x0000000000100724                i686_ISR171
+                0x0000000000100730                i686_ISR172
+                0x000000000010073c                i686_ISR173
+                0x0000000000100748                i686_ISR174
+                0x0000000000100754                i686_ISR175
+                0x0000000000100760                i686_ISR176
+                0x000000000010076c                i686_ISR177
+                0x0000000000100778                i686_ISR178
+                0x0000000000100784                i686_ISR179
+                0x0000000000100790                i686_ISR180
+                0x000000000010079c                i686_ISR181
+                0x00000000001007a8                i686_ISR182
+                0x00000000001007b4                i686_ISR183
+                0x00000000001007c0                i686_ISR184
+                0x00000000001007cc                i686_ISR185
+                0x00000000001007d8                i686_ISR186
+                0x00000000001007e4                i686_ISR187
+                0x00000000001007f0                i686_ISR188
+                0x00000000001007fc                i686_ISR189
+                0x0000000000100808                i686_ISR190
+                0x0000000000100814                i686_ISR191
+                0x0000000000100820                i686_ISR192
+                0x000000000010082c                i686_ISR193
+                0x0000000000100838                i686_ISR194
+                0x0000000000100844                i686_ISR195
+                0x0000000000100850                i686_ISR196
+                0x000000000010085c                i686_ISR197
+                0x0000000000100868                i686_ISR198
+                0x0000000000100874                i686_ISR199
+                0x0000000000100880                i686_ISR200
+                0x000000000010088c                i686_ISR201
+                0x0000000000100898                i686_ISR202
+                0x00000000001008a4                i686_ISR203
+                0x00000000001008b0                i686_ISR204
+                0x00000000001008bc                i686_ISR205
+                0x00000000001008c8                i686_ISR206
+                0x00000000001008d4                i686_ISR207
+                0x00000000001008e0                i686_ISR208
+                0x00000000001008ec                i686_ISR209
+                0x00000000001008f8                i686_ISR210
+                0x0000000000100904                i686_ISR211
+                0x0000000000100910                i686_ISR212
+                0x000000000010091c                i686_ISR213
+                0x0000000000100928                i686_ISR214
+                0x0000000000100934                i686_ISR215
+                0x0000000000100940                i686_ISR216
+                0x000000000010094c                i686_ISR217
+                0x0000000000100958                i686_ISR218
+                0x0000000000100964                i686_ISR219
+                0x0000000000100970                i686_ISR220
+                0x000000000010097c                i686_ISR221
+                0x0000000000100988                i686_ISR222
+                0x0000000000100994                i686_ISR223
+                0x00000000001009a0                i686_ISR224
+                0x00000000001009ac                i686_ISR225
+                0x00000000001009b8                i686_ISR226
+                0x00000000001009c4                i686_ISR227
+                0x00000000001009d0                i686_ISR228
+                0x00000000001009dc                i686_ISR229
+                0x00000000001009e8                i686_ISR230
+                0x00000000001009f4                i686_ISR231
+                0x0000000000100a00                i686_ISR232
+                0x0000000000100a0c                i686_ISR233
+                0x0000000000100a18                i686_ISR234
+                0x0000000000100a24                i686_ISR235
+                0x0000000000100a30                i686_ISR236
+                0x0000000000100a3c                i686_ISR237
+                0x0000000000100a48                i686_ISR238
+                0x0000000000100a54                i686_ISR239
+                0x0000000000100a60                i686_ISR240
+                0x0000000000100a6c                i686_ISR241
+                0x0000000000100a75                i686_ISR242
+                0x0000000000100a7e                i686_ISR243
+                0x0000000000100a87                i686_ISR244
+                0x0000000000100a90                i686_ISR245
+                0x0000000000100a99                i686_ISR246
+                0x0000000000100aa2                i686_ISR247
+                0x0000000000100aab                i686_ISR248
+                0x0000000000100ab4                i686_ISR249
+                0x0000000000100abd                i686_ISR250
+                0x0000000000100ac6                i686_ISR251
+                0x0000000000100acf                i686_ISR252
+                0x0000000000100ad8                i686_ISR253
+                0x0000000000100ae1                i686_ISR254
+                0x0000000000100aea                i686_ISR255
+ .text          0x0000000000100b1d      0x139 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/commands.obj
+                0x0000000000100bc6                execute_command
+ .text          0x0000000000100c56       0x19 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/main.obj
+                0x0000000000100c56                timer
+ .text          0x0000000000100c6f       0xf5 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/memory.obj
+                0x0000000000100c6f                memcpy
+                0x0000000000100cc1                memset
+                0x0000000000100d04                memcmp
+ .text          0x0000000000100d64      0x895 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/stdio.obj
+                0x0000000000100d64                putchr
+                0x0000000000100d93                putcolor
+                0x0000000000100dc5                getchr
+                0x0000000000100de7                getcolor
+                0x0000000000100e0c                setcursor
+                0x0000000000100e7d                clrscr
+                0x0000000000100f0b                scrollback
+                0x0000000000100ff9                putc
+                0x0000000000101106                puts
+                0x0000000000101135                printf_unsigned
+                0x00000000001011ee                printf_signed
+                0x000000000010124b                printf
+                0x0000000000101560                print_buffer
+ .text          0x00000000001015f9       0x22 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/hal/hal.obj
+                0x00000000001015f9                HAL_Initialize
+ .text          0x000000000010161b       0x1d /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/gdt.obj
+                0x000000000010161b                i686_GDT_Initialize
+ .text          0x0000000000101638       0xbc /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/idt.obj
+                0x0000000000101638                i686_IDT_SetGate
+                0x000000000010169b                i686_IDT_EnableGate
+                0x00000000001016bb                i686_IDT_DisableGate
+                0x00000000001016db                i686_IDT_Initialize
+ .text          0x00000000001016f4       0x1b /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/io.obj
+                0x00000000001016f4                i686_iowait
+ .text          0x000000000010170f       0xcc /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/irq.obj
+                0x000000000010170f                i686_IRQ_Handler
+                0x0000000000101781                i686_IRQ_Initialize
+                0x00000000001017c8                i686_IRQ_RegisterHandler
+ .text          0x00000000001017db      0x1a1 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isr.obj
+                0x00000000001017db                i686_ISR_Initialize
+                0x000000000010181d                i686_ISR_Handler
+                0x0000000000101958                i686_ISR_RegisterHandler
+ .text          0x000000000010197c     0x1489 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isrs_gen.obj
+                0x000000000010197c                i686_ISR_InitializeGates
+ .text          0x0000000000102e05      0x199 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/keyboard.obj
+                0x0000000000102e70                keyboard_init
+                0x0000000000102e98                keyboard_handle_char
+ .text          0x0000000000102f9e      0x2c8 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/pic.obj
+                0x0000000000102f9e                i686_PIC_Configure
+                0x0000000000103096                i686_PIC_SendEndOfInterrupt
+                0x00000000001030c6                i686_PIC_Disable
+                0x0000000000103100                i686_PIC_Mask
+                0x000000000010315a                i686_PIC_Unmask
+                0x00000000001031b6                i686_PIC_ReadIrqRequestRegister
+                0x000000000010320e                i686_PIC_ReadInServiceRegister
+ *fill*         0x0000000000103266        0xa 
+ .text          0x0000000000103270      0x112 /usr/lib/gcc-cross/i686-linux-gnu/11/libgcc.a(_udivdi3.o)
+                0x0000000000103270                __udivdi3
+ *fill*         0x0000000000103382        0xe 
+ .text          0x0000000000103390      0x111 /usr/lib/gcc-cross/i686-linux-gnu/11/libgcc.a(_umoddi3.o)
+                0x0000000000103390                __umoddi3
+
+.data           0x00000000001034a4       0x2a
+                0x00000000001034a4                __data_start = .
+ *(.data)
+ .data          0x00000000001034a4        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/commands.obj
+ .data          0x00000000001034a4        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/main.obj
+ .data          0x00000000001034a4        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/memory.obj
+ .data          0x00000000001034a4        0x4 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/stdio.obj
+                0x00000000001034a4                g_ScreenBuffer
+ .data          0x00000000001034a8        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/hal/hal.obj
+ .data          0x00000000001034a8       0x1e /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/gdt.obj
+                0x00000000001034a8                g_GDT
+                0x00000000001034c0                g_GDTDescriptor
+ *fill*         0x00000000001034c6        0x2 
+ .data          0x00000000001034c8        0x6 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/idt.obj
+                0x00000000001034c8                g_IDTDescriptor
+ .data          0x00000000001034ce        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/io.obj
+ .data          0x00000000001034ce        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/irq.obj
+ .data          0x00000000001034ce        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isr.obj
+ .data          0x00000000001034ce        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isrs_gen.obj
+ .data          0x00000000001034ce        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/keyboard.obj
+ .data          0x00000000001034ce        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/pic.obj
+ .data          0x00000000001034ce        0x0 /usr/lib/gcc-cross/i686-linux-gnu/11/libgcc.a(_udivdi3.o)
+ .data          0x00000000001034ce        0x0 /usr/lib/gcc-cross/i686-linux-gnu/11/libgcc.a(_umoddi3.o)
+
+.rodata         0x00000000001034e0      0x4d6
+                0x00000000001034e0                __rodata_start = .
+ *(.rodata)
+ .rodata        0x00000000001034e0       0x40 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/commands.obj
+ .rodata        0x0000000000103520       0x16 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/main.obj
+ *fill*         0x0000000000103536        0x2 
+ .rodata        0x0000000000103538       0xba /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/stdio.obj
+                0x0000000000103538                SCREEN_WIDTH
+                0x000000000010353c                SCREEN_HEIGHT
+                0x0000000000103540                DEFAULT_COLOR
+                0x0000000000103544                g_HexChars
+ *fill*         0x00000000001035f2        0x2 
+ .rodata        0x00000000001035f4       0x25 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/irq.obj
+ *fill*         0x0000000000103619        0x7 
+ .rodata        0x0000000000103620      0x34f /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isr.obj
+ *fill*         0x000000000010396f       0x11 
+ .rodata        0x0000000000103980       0x36 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/keyboard.obj
+
+.eh_frame       0x00000000001039b8      0x7e8
+ .eh_frame      0x00000000001039b8       0x78 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/commands.obj
+ .eh_frame      0x0000000000103a30       0x54 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/main.obj
+ .eh_frame      0x0000000000103a84       0x78 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/memory.obj
+ .eh_frame      0x0000000000103afc      0x1c4 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/stdio.obj
+ .eh_frame      0x0000000000103cc0       0x38 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/hal/hal.obj
+ .eh_frame      0x0000000000103cf8       0x38 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/gdt.obj
+ .eh_frame      0x0000000000103d30       0x98 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/idt.obj
+ .eh_frame      0x0000000000103dc8       0x38 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/io.obj
+ .eh_frame      0x0000000000103e00       0x78 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/irq.obj
+ .eh_frame      0x0000000000103e78       0x88 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isr.obj
+ .eh_frame      0x0000000000103f00       0x38 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isrs_gen.obj
+ .eh_frame      0x0000000000103f38       0x78 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/keyboard.obj
+ .eh_frame      0x0000000000103fb0      0x100 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/pic.obj
+ .eh_frame      0x00000000001040b0       0x84 /usr/lib/gcc-cross/i686-linux-gnu/11/libgcc.a(_udivdi3.o)
+ .eh_frame      0x0000000000104134       0x6c /usr/lib/gcc-cross/i686-linux-gnu/11/libgcc.a(_umoddi3.o)
+
+.note.gnu.property
+                0x00000000001041a0       0x38
+ .note.gnu.property
+                0x00000000001041a0       0x1c /usr/lib/gcc-cross/i686-linux-gnu/11/libgcc.a(_udivdi3.o)
+ .note.gnu.property
+                0x00000000001041bc       0x1c /usr/lib/gcc-cross/i686-linux-gnu/11/libgcc.a(_umoddi3.o)
+
+.bss            0x00000000001041e0      0xd70
+                0x00000000001041e0                __bss_start = .
+ *(.bss)
+ .bss           0x00000000001041e0        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/commands.obj
+ .bss           0x00000000001041e0        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/main.obj
+ .bss           0x00000000001041e0        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/memory.obj
+ .bss           0x00000000001041e0        0x8 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/stdio.obj
+                0x00000000001041e0                g_ScreenX
+                0x00000000001041e4                g_ScreenY
+ .bss           0x00000000001041e8        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/hal/hal.obj
+ .bss           0x00000000001041e8        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/gdt.obj
+ *fill*         0x00000000001041e8       0x18 
+ .bss           0x0000000000104200      0x800 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/idt.obj
+                0x0000000000104200                g_IDT
+ .bss           0x0000000000104a00        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/io.obj
+ .bss           0x0000000000104a00       0x40 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/irq.obj
+                0x0000000000104a00                g_IRQHandlers
+ .bss           0x0000000000104a40      0x400 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isr.obj
+                0x0000000000104a40                g_ISRHandlers
+ .bss           0x0000000000104e40        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isrs_gen.obj
+ .bss           0x0000000000104e40      0x104 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/keyboard.obj
+ .bss           0x0000000000104f44        0xc /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/pic.obj
+                0x0000000000104f44                PIC_ICW1
+                0x0000000000104f48                PIC_ICW4
+                0x0000000000104f4c                PIC_CMD
+ .bss           0x0000000000104f50        0x0 /usr/lib/gcc-cross/i686-linux-gnu/11/libgcc.a(_udivdi3.o)
+ .bss           0x0000000000104f50        0x0 /usr/lib/gcc-cross/i686-linux-gnu/11/libgcc.a(_umoddi3.o)
+                0x0000000000104f50                __end = .
+OUTPUT(/mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel.bin binary)
+
+.debug_info     0x0000000000000000     0x280f
+ .debug_info    0x0000000000000000      0x128 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/commands.obj
+ .debug_info    0x0000000000000128      0x221 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/main.obj
+ .debug_info    0x0000000000000349      0x1da /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/memory.obj
+ .debug_info    0x0000000000000523      0x53f /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/stdio.obj
+ .debug_info    0x0000000000000a62       0xb2 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/hal/hal.obj
+ .debug_info    0x0000000000000b14      0x1ec /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/gdt.obj
+ .debug_info    0x0000000000000d00      0x240 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/idt.obj
+ .debug_info    0x0000000000000f40       0x9e /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/io.obj
+ .debug_info    0x0000000000000fde      0x2ec /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/irq.obj
+ .debug_info    0x00000000000012ca      0x295 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isr.obj
+ .debug_info    0x000000000000155f      0xcfb /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isrs_gen.obj
+ .debug_info    0x000000000000225a      0x35c /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/keyboard.obj
+ .debug_info    0x00000000000025b6      0x259 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/pic.obj
+
+.debug_abbrev   0x0000000000000000      0xe4e
+ .debug_abbrev  0x0000000000000000       0xba /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/commands.obj
+ .debug_abbrev  0x00000000000000ba      0x13a /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/main.obj
+ .debug_abbrev  0x00000000000001f4       0xe2 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/memory.obj
+ .debug_abbrev  0x00000000000002d6      0x1f6 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/stdio.obj
+ .debug_abbrev  0x00000000000004cc       0x5a /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/hal/hal.obj
+ .debug_abbrev  0x0000000000000526       0xf0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/gdt.obj
+ .debug_abbrev  0x0000000000000616      0x122 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/idt.obj
+ .debug_abbrev  0x0000000000000738       0x6d /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/io.obj
+ .debug_abbrev  0x00000000000007a5      0x180 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/irq.obj
+ .debug_abbrev  0x0000000000000925      0x150 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isr.obj
+ .debug_abbrev  0x0000000000000a75       0xbf /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isrs_gen.obj
+ .debug_abbrev  0x0000000000000b34      0x1c0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/keyboard.obj
+ .debug_abbrev  0x0000000000000cf4      0x15a /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/pic.obj
+
+.debug_aranges  0x0000000000000000      0x1a8
+ .debug_aranges
+                0x0000000000000000       0x20 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/commands.obj
+ .debug_aranges
+                0x0000000000000020       0x28 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/main.obj
+ .debug_aranges
+                0x0000000000000048       0x20 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/memory.obj
+ .debug_aranges
+                0x0000000000000068       0x20 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/stdio.obj
+ .debug_aranges
+                0x0000000000000088       0x20 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/hal/hal.obj
+ .debug_aranges
+                0x00000000000000a8       0x20 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/gdt.obj
+ .debug_aranges
+                0x00000000000000c8       0x20 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/idt.obj
+ .debug_aranges
+                0x00000000000000e8       0x20 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/io.obj
+ .debug_aranges
+                0x0000000000000108       0x20 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/irq.obj
+ .debug_aranges
+                0x0000000000000128       0x20 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isr.obj
+ .debug_aranges
+                0x0000000000000148       0x20 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isrs_gen.obj
+ .debug_aranges
+                0x0000000000000168       0x20 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/keyboard.obj
+ .debug_aranges
+                0x0000000000000188       0x20 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/pic.obj
+
+.debug_line     0x0000000000000000      0xe53
+ .debug_line    0x0000000000000000      0x142 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/commands.obj
+ .debug_line    0x0000000000000142       0x92 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/main.obj
+ .debug_line    0x00000000000001d4       0xe8 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/memory.obj
+ .debug_line    0x00000000000002bc      0x3c5 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/stdio.obj
+ .debug_line    0x0000000000000681       0x70 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/hal/hal.obj
+ .debug_line    0x00000000000006f1       0x5c /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/gdt.obj
+ .debug_line    0x000000000000074d       0x89 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/idt.obj
+ .debug_line    0x00000000000007d6       0x5e /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/io.obj
+ .debug_line    0x0000000000000834       0xc7 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/irq.obj
+ .debug_line    0x00000000000008fb       0xdc /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isr.obj
+ .debug_line    0x00000000000009d7      0x25f /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isrs_gen.obj
+ .debug_line    0x0000000000000c36      0x11b /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/keyboard.obj
+ .debug_line    0x0000000000000d51      0x102 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/pic.obj
+
+.debug_str      0x0000000000000000     0x25b5
+ .debug_str     0x0000000000000000      0x12e /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/commands.obj
+ .debug_str     0x000000000000012e      0x18b /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/main.obj
+ .debug_str     0x00000000000002b9      0x148 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/memory.obj
+ .debug_str     0x0000000000000401      0x272 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/stdio.obj
+ .debug_str     0x0000000000000673      0x15f /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/hal/hal.obj
+ .debug_str     0x00000000000007d2      0x31d /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/gdt.obj
+ .debug_str     0x0000000000000aef      0x2b4 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/idt.obj
+ .debug_str     0x0000000000000da3      0x119 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/io.obj
+ .debug_str     0x0000000000000ebc      0x266 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/irq.obj
+ .debug_str     0x0000000000001122      0x1f7 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isr.obj
+ .debug_str     0x0000000000001319      0xd81 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isrs_gen.obj
+ .debug_str     0x000000000000209a      0x225 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/keyboard.obj
+ .debug_str     0x00000000000022bf      0x2f6 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/pic.obj
+
+.debug_line_str
+                0x0000000000000000      0xc1a
+ .debug_line_str
+                0x0000000000000000       0xb1 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/commands.obj
+ .debug_line_str
+                0x00000000000000b1      0x104 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/main.obj
+ .debug_line_str
+                0x00000000000001b5       0xdb /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/memory.obj
+ .debug_line_str
+                0x0000000000000290       0xf2 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/stdio.obj
+ .debug_line_str
+                0x0000000000000382       0xcf /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/hal/hal.obj
+ .debug_line_str
+                0x0000000000000451       0xe6 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/gdt.obj
+ .debug_line_str
+                0x0000000000000537       0xec /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/idt.obj
+ .debug_line_str
+                0x0000000000000623       0xe8 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/io.obj
+ .debug_line_str
+                0x000000000000070b      0x107 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/irq.obj
+ .debug_line_str
+                0x0000000000000812      0x101 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isr.obj
+ .debug_line_str
+                0x0000000000000913       0xfb /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isrs_gen.obj
+ .debug_line_str
+                0x0000000000000a0e      0x121 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/keyboard.obj
+ .debug_line_str
+                0x0000000000000b2f       0xeb /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/pic.obj
+
+.comment        0x0000000000000000      0x23c
+ .comment       0x0000000000000000       0x2c /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/commands.obj
+ .comment       0x000000000000002c       0x2c /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/main.obj
+ .comment       0x0000000000000058       0x2c /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/memory.obj
+ .comment       0x0000000000000084       0x2c /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/stdio.obj
+ .comment       0x00000000000000b0       0x2c /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/hal/hal.obj
+ .comment       0x00000000000000dc       0x2c /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/gdt.obj
+ .comment       0x0000000000000108       0x2c /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/idt.obj
+ .comment       0x0000000000000134       0x2c /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/io.obj
+ .comment       0x0000000000000160       0x2c /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/irq.obj
+ .comment       0x000000000000018c       0x2c /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isr.obj
+ .comment       0x00000000000001b8       0x2c /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isrs_gen.obj
+ .comment       0x00000000000001e4       0x2c /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/keyboard.obj
+ .comment       0x0000000000000210       0x2c /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/pic.obj
+
+.note.GNU-stack
+                0x0000000000000000        0x0
+ .note.GNU-stack
+                0x0000000000000000        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/commands.obj
+ .note.GNU-stack
+                0x0000000000000000        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/main.obj
+ .note.GNU-stack
+                0x0000000000000000        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/memory.obj
+ .note.GNU-stack
+                0x0000000000000000        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/stdio.obj
+ .note.GNU-stack
+                0x0000000000000000        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/hal/hal.obj
+ .note.GNU-stack
+                0x0000000000000000        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/gdt.obj
+ .note.GNU-stack
+                0x0000000000000000        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/idt.obj
+ .note.GNU-stack
+                0x0000000000000000        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/io.obj
+ .note.GNU-stack
+                0x0000000000000000        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/irq.obj
+ .note.GNU-stack
+                0x0000000000000000        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isr.obj
+ .note.GNU-stack
+                0x0000000000000000        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/isrs_gen.obj
+ .note.GNU-stack
+                0x0000000000000000        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/keyboard.obj
+ .note.GNU-stack
+                0x0000000000000000        0x0 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/pic.obj
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc-cross/i686-linux-gnu/11/libgcc.a(_udivdi3.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc-cross/i686-linux-gnu/11/libgcc.a(_umoddi3.o)
+
+.debug_rnglists
+                0x0000000000000000       0x2c
+ .debug_rnglists
+                0x0000000000000000       0x19 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/main.obj
+ .debug_rnglists
+                0x0000000000000019       0x13 /mnt/fa80eae1-2491-49b1-aa7d-ceccb9d60a8d/MyOS/myos10.2/build/kernel/c/arch/i686/keyboard.obj
