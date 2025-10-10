@@ -1,67 +1,46 @@
-include build_scripts/config.mk
+BUILD_DIR ?= build
+ASM ?= nasm
+CC ?= gcc
+LD ?= ld
 
-.PHONY: all floppy_image kernel bootloader clean always tools_fat
+.PHONY: all bootloader kernel floppy_image clean
 
-all: floppy_image tools_fat
-
-include build_scripts/toolchain.mk
-
-#
-# Floppy image
-#
-floppy_image: $(BUILD_DIR)/main_floppy.img
-
-$(BUILD_DIR)/main_floppy.img: bootloader kernel
-	@dd if=/dev/zero of=$@ bs=512 count=2880 >/dev/null
-	@mkfs.fat -F 12 -n "NBOS" $@ >/dev/null
-	@dd if=$(BUILD_DIR)/stage1.bin of=$@ conv=notrunc >/dev/null
-	@mcopy -i $@ $(BUILD_DIR)/stage2.bin "::stage2.bin"
-	@mcopy -i $@ $(BUILD_DIR)/kernel.bin "::kernel.bin"
-	@mmd -i $@ "::mydir"
-	@echo "--> Created: " $@
+all: floppy_image
 
 #
 # Bootloader
 #
 bootloader: stage1 stage2
 
-stage1: $(BUILD_DIR)/stage1.bin
-
-$(BUILD_DIR)/stage1.bin: always
+stage1:
 	@$(MAKE) -C src/bootloader/stage1 BUILD_DIR=$(abspath $(BUILD_DIR))
 
-stage2: $(BUILD_DIR)/stage2.bin
-
-$(BUILD_DIR)/stage2.bin: always
+stage2:
 	@$(MAKE) -C src/bootloader/stage2 BUILD_DIR=$(abspath $(BUILD_DIR))
 
 #
 # Kernel
 #
-kernel: $(BUILD_DIR)/kernel.bin
-
-$(BUILD_DIR)/kernel.bin: always
+kernel:
 	@$(MAKE) -C src/kernel BUILD_DIR=$(abspath $(BUILD_DIR))
 
 #
-# Tools
+# Floppy image
 #
-tools_fat: $(BUILD_DIR)/tools/fat
-$(BUILD_DIR)/tools/fat: always tools/fat/fat.c
-	@mkdir -p $(BUILD_DIR)/tools
-	@$(MAKE) -C tools/fat BUILD_DIR=$(abspath $(BUILD_DIR))
-
-#
-# Always
-#
-always:
+floppy_image: bootloader kernel
 	@mkdir -p $(BUILD_DIR)
+	@dd if=/dev/zero of=$(BUILD_DIR)/myos.img bs=512 count=32768 >/dev/null
+	@mkfs.fat -F 16 -n "NBOS" $(BUILD_DIR)/myos.img >/dev/null
+	@dd if=$(BUILD_DIR)/stage1.bin of=$(BUILD_DIR)/myos.img conv=notrunc >/dev/null
+	@mcopy -i $(BUILD_DIR)/myos.img $(BUILD_DIR)/stage2.bin "::STAGE2.BIN"
+	@mcopy -i $(BUILD_DIR)/myos.img $(BUILD_DIR)/kernel.bin "::KERNEL.BIN"
+	@echo "--> Created floppy image: $(BUILD_DIR)/myos.img"
 
 #
 # Clean
 #
 clean:
-	@$(MAKE) -C src/bootloader/stage1 BUILD_DIR=$(abspath $(BUILD_DIR)) clean
-	@$(MAKE) -C src/bootloader/stage2 BUILD_DIR=$(abspath $(BUILD_DIR)) clean
-	@$(MAKE) -C src/kernel BUILD_DIR=$(abspath $(BUILD_DIR)) clean
+	@$(MAKE) -C src/bootloader/stage1 clean
+	@$(MAKE) -C src/bootloader/stage2 clean
+	@$(MAKE) -C src/kernel clean
 	@rm -rf $(BUILD_DIR)/*
