@@ -1,21 +1,29 @@
 export CFLAGS = -std=c99 -g
 export ASMFLAGS =
-export CC = gcc
-export CXX = g++
-export LD = gcc
-export ASM = nasm
-export LINKFLAGS =
-export LIBS =
+CC ?= gcc
+CXX ?= g++
+LD ?= gcc
+ASM ?= nasm
+LINKFLAGS ?=
+LIBS ?=
 
-export TARGET = i686-elf
-export TARGET_ASM = nasm
-export TARGET_ASMFLAGS =
-export TARGET_CFLAGS = -std=c99 -g #-O2
-export TARGET_CC = $(TARGET)-gcc
-export TARGET_CXX = $(TARGET)-g++
-export TARGET_LD = $(TARGET)-gcc
-export TARGET_LINKFLAGS =
-export TARGET_LIBS =
+TARGET ?= i686-elf
+TARGET_ASM ?= nasm
+TARGET_ASMFLAGS ?=
+TARGET_CFLAGS ?= -std=c99 -g #-O2
+TARGET_CC ?= $(TARGET)-gcc
+TARGET_CXX ?= $(TARGET)-g++
+TARGET_LD ?= $(TARGET)-gcc
+TARGET_LINKFLAGS ?=
+TARGET_LIBS ?=
+
+# Export toolchain/target variables so they are available to recursive make (-C) calls
+export TARGET TARGET_ASM TARGET_ASMFLAGS TARGET_CFLAGS TARGET_CC TARGET_CXX TARGET_LD TARGET_LINKFLAGS TARGET_LIBS
+
+# Allow user to point to an existing cross-toolchain prefix. If empty, build_scripts/toolchain.mk
+# will build a local toolchain under toolchain/$(TARGET). Example: make TOOLCHAIN_PREFIX=/usr/local CROSS_PREFIX=/usr/bin
+TOOLCHAIN_PREFIX ?= $(abspath toolchain/$(TARGET))
+export PATH := $(TOOLCHAIN_PREFIX)/bin:$(PATH)
 
 export SOURCE_DIR = $(abspath .)
 export BUILD_DIR = $(abspath build)

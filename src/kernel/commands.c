@@ -23,9 +23,16 @@ void execute_command(char* cmd)
     }
     else if (simple_strncmp(cmd, "echo ", 5) == 0)
     {
-        puts(cmd + 5);
         putc('\n');
+        puts(cmd + 5);
+        
     }
+
+    else if (simple_strcmp(cmd, "clear") == 0)
+    {
+    
+    }
+
     else if (simple_strcmp(cmd, "") == 0)
     {
         // ignore empty
@@ -34,4 +41,5 @@ void execute_command(char* cmd)
     {
         puts("Unknown command\n");
     }
+
 }
