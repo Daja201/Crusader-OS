@@ -1,5 +1,4 @@
 TARGET_ASMFLAGS += -f elf
-TARGET_LIBS += -lgcc
 TARGET_CFLAGS += -ffreestanding -nostdlib -fno-pic -fno-pie -m32 -I. -Iinclude -Iinclude/hal
 TARGET_LINKFLAGS += -T linker.ld -nostdlib -no-pie
 

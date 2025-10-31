@@ -1,15 +1,32 @@
 
-TOOLCHAIN_PREFIX = $(abspath toolchain/$(TARGET))
+# TOOLCHAIN_PREFIX may be set by the user to point at a prebuilt cross toolchain.
+# Default is the local toolchain under toolchain/$(TARGET).
+TOOLCHAIN_PREFIX ?= $(abspath toolchain/$(TARGET))
 export PATH := $(TOOLCHAIN_PREFIX)/bin:$(PATH)
 
+# If a cross-compiler for $(TARGET) is already available in PATH (or under
+# $(TOOLCHAIN_PREFIX)/bin), skip building the toolchain.
+ifneq (,$(shell which $(TARGET)-gcc 2>/dev/null))
+HAVE_TOOLCHAIN := 1
+else ifneq (,$(wildcard $(TOOLCHAIN_PREFIX)/bin/$(TARGET)-gcc))
+HAVE_TOOLCHAIN := 1
+else
+HAVE_TOOLCHAIN := 0
+endif
+
+ifeq ($(HAVE_TOOLCHAIN),1)
+toolchain:
+	@echo "Using existing cross-toolchain for $(TARGET) (prefix=$(TOOLCHAIN_PREFIX))."
+else
 toolchain: toolchain_binutils toolchain_gcc
+endif
 
 BINUTILS_SRC = toolchain/binutils-$(BINUTILS_VERSION)
 BINUTILS_BUILD = toolchain/binutils-build-$(BINUTILS_VERSION)
 
-toolchain_binutils: $(TOOLCHAIN_PREFIX)/bin/i686-elf-ld
+toolchain_binutils: $(TOOLCHAIN_PREFIX)/bin/$(TARGET)-ld
 
-$(TOOLCHAIN_PREFIX)/bin/i686-elf-ld: $(BINUTILS_SRC).tar.xz
+$(TOOLCHAIN_PREFIX)/bin/$(TARGET)-ld: $(BINUTILS_SRC).tar.xz
 	cd toolchain && tar -xf binutils-$(BINUTILS_VERSION).tar.xz
 	mkdir $(BINUTILS_BUILD)
 	cd $(BINUTILS_BUILD) && CFLAGS= ASMFLAGS= CC= CXX= LD= ASM= LINKFLAGS= LIBS= ../binutils-$(BINUTILS_VERSION)/configure \
@@ -29,9 +46,9 @@ $(BINUTILS_SRC).tar.xz:
 GCC_SRC = toolchain/gcc-$(GCC_VERSION)
 GCC_BUILD = toolchain/gcc-build-$(GCC_VERSION)
 
-toolchain_gcc: $(TOOLCHAIN_PREFIX)/bin/i686-elf-gcc
+toolchain_gcc: $(TOOLCHAIN_PREFIX)/bin/$(TARGET)-gcc
 
-$(TOOLCHAIN_PREFIX)/bin/i686-elf-gcc: $(TOOLCHAIN_PREFIX)/bin/i686-elf-ld $(GCC_SRC).tar.xz
+$(TOOLCHAIN_PREFIX)/bin/$(TARGET)-gcc: $(TOOLCHAIN_PREFIX)/bin/$(TARGET)-ld $(GCC_SRC).tar.xz
 	cd toolchain && tar -xf gcc-$(GCC_VERSION).tar.xz
 	mkdir $(GCC_BUILD)
 	cd $(GCC_BUILD) && CFLAGS= ASMFLAGS= CC= CXX= LD= ASM= LINKFLAGS= LIBS= ../gcc-$(GCC_VERSION)/configure \
