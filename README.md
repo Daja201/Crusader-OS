@@ -7,5 +7,7 @@ sudo apt install build-essential libgmp3-dev libmpc-dev libmpfr-dev texinfo wget
 
 (copied from nanobyteOS repository, may cointain more or less packages then needed)
 
+I personally use qemu for emulation:
+qemu-system-i386 -fda build/main_floppy.img
 
 You need to make your own i686 cross compiler, or use some existing one (im using some random precompiled from git but you can make your own)
