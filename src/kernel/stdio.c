@@ -39,19 +39,45 @@ void setcursor(int x, int y)
     i686_outb(0x3D4, 0x0E);
     i686_outb(0x3D5, (uint8_t)((pos >> 8) & 0xFF));
 }
-
 void clrscr()
 {
-    for (int y = 0; y < SCREEN_HEIGHT; y++)
+    /*
+     * Scroll the screen down by SCREEN_HEIGHT rows by copying the
+     * video buffer instead of printing newline characters. This makes the
+     * visual effect of moving the content down without emitting any
+     * printable characters to the screen (no stray arrows or escape
+     * sequences).
+     */
+
+    int lines = SCREEN_HEIGHT;
+
+    /* Shift existing rows downward. Walk backward so we don't overwrite
+     * source data while copying. For lines == SCREEN_HEIGHT the loop
+     * won't run and we'll fall through to clearing all rows.
+     */
+    for (int y = SCREEN_HEIGHT - 1; y >= lines; y--)
+    {
         for (int x = 0; x < SCREEN_WIDTH; x++)
         {
-            putchr(x, y, '\0');
+            char ch = getchr(x, y - lines);
+            uint8_t color = getcolor(x, y - lines);
+            putchr(x, y, ch);
+            putcolor(x, y, color);
+        }
+    }
+
+    /* Clear the new top `lines` rows */
+    for (int y = 0; y < lines; y++)
+        for (int x = 0; x < SCREEN_WIDTH; x++)
+        {
+            putchr(x, y, ' ');
             putcolor(x, y, DEFAULT_COLOR);
         }
 
+    /* Reset cursor position to top-left */
     g_ScreenX = 0;
     g_ScreenY = 0;
-    setcursor(g_ScreenX, g_ScreenY);
+    setcursor(0, 0);
 }
 
 void scrollback(int lines)
