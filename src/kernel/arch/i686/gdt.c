@@ -3,18 +3,18 @@
 
 typedef struct
 {
-    uint16_t LimitLow;                  // limit (bits 0-15)
-    uint16_t BaseLow;                   // base (bits 0-15)
-    uint8_t BaseMiddle;                 // base (bits 16-23)
-    uint8_t Access;                     // access
-    uint8_t FlagsLimitHi;               // limit (bits 16-19) | flags
-    uint8_t BaseHigh;                   // base (bits 24-31)
+    uint16_t LimitLow;                  
+    uint16_t BaseLow;                   
+    uint8_t BaseMiddle;                 
+    uint8_t Access;                     
+    uint8_t FlagsLimitHi;               
+    uint8_t BaseHigh;                   
 } __attribute__((packed)) GDTEntry;
 
 typedef struct
 {
-    uint16_t Limit;                     // sizeof(gdt) - 1
-    GDTEntry* Ptr;                      // address of GDT
+    uint16_t Limit;                     
+    GDTEntry* Ptr;                      
 } __attribute__((packed)) GDTDescriptor;
 
 typedef enum
@@ -50,7 +50,7 @@ typedef enum
     GDT_FLAG_GRANULARITY_4K                 = 0x80,
 } GDT_FLAGS;
 
-// Helper macros
+
 #define GDT_LIMIT_LOW(limit)                (limit & 0xFFFF)
 #define GDT_BASE_LOW(base)                  (base & 0xFFFF)
 #define GDT_BASE_MIDDLE(base)               ((base >> 16) & 0xFF)
@@ -67,16 +67,16 @@ typedef enum
 }
 
 GDTEntry g_GDT[] = {
-    // NULL descriptor
+    
     GDT_ENTRY(0, 0, 0, 0),
 
-    // Kernel 32-bit code segment
+    
     GDT_ENTRY(0,
               0xFFFFF,
               GDT_ACCESS_PRESENT | GDT_ACCESS_RING0 | GDT_ACCESS_CODE_SEGMENT | GDT_ACCESS_CODE_READABLE,
               GDT_FLAG_32BIT | GDT_FLAG_GRANULARITY_4K),
 
-    // Kernel 32-bit data segment
+    
     GDT_ENTRY(0,
               0xFFFFF,
               GDT_ACCESS_PRESENT | GDT_ACCESS_RING0 | GDT_ACCESS_DATA_SEGMENT | GDT_ACCESS_DATA_WRITEABLE,

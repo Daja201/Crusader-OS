@@ -20,13 +20,13 @@ bool DISK_Initialize(DISK* disk, uint8_t driveNumber)
 
 void DISK_LBA2CHS(DISK* disk, uint32_t lba, uint16_t* cylinderOut, uint16_t* sectorOut, uint16_t* headOut)
 {
-    // sector = (LBA % sectors per track + 1)
+    
     *sectorOut = lba % disk->sectors + 1;
 
-    // cylinder = (LBA / sectors per track) / heads
+    
     *cylinderOut = (lba / disk->sectors) / disk->heads;
 
-    // head = (LBA / sectors per track) % heads
+    
     *headOut = (lba / disk->sectors) % disk->heads;
 }
 

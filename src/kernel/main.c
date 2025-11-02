@@ -42,9 +42,9 @@ printf(
 
 
 
-    //i686_IRQ_RegisterHandler(0, timer);
+    
 
-    //crash_me();
+    
 
 end:
     for (;;);
