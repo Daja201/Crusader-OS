@@ -2,6 +2,7 @@
 #include <arch/i686/io.h>
 #include <stdarg.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 const unsigned SCREEN_WIDTH = 80;
 const unsigned SCREEN_HEIGHT = 25;
@@ -150,7 +151,7 @@ void printf_unsigned(unsigned long long number, int radix)
     char buffer[32];
     int pos = 0;
 
-    // convert number to ASCII
+    
     do 
     {
         unsigned long long rem = number % radix;
@@ -158,7 +159,7 @@ void printf_unsigned(unsigned long long number, int radix)
         buffer[pos++] = g_HexChars[rem];
     } while (number > 0);
 
-    // print number in reverse order
+    
     while (--pos >= 0)
         putc(buffer[pos]);
 }
@@ -270,7 +271,7 @@ void printf(const char* fmt, ...)
                     case 'o':   radix = 8; sign = false; number = true;
                                 break;
 
-                    // ignore invalid spec
+                    
                     default:    break;
                 }
 
@@ -310,7 +311,7 @@ void printf(const char* fmt, ...)
                     }
                 }
 
-                // reset state
+                
                 state = PRINTF_STATE_NORMAL;
                 length = PRINTF_LENGTH_DEFAULT;
                 radix = 10;
