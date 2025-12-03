@@ -10,11 +10,4 @@ I personally use qemu for emulation i686 processor:
 
 You need to make your own i686 cross compiler, or use some existing one like OpenWatcomV2 (im using some random precompiled from git but you can make your own)
 
-v01:
-  Basically plain copy from [NanobyteOS](https://github.com/nanobyte-dev/nanobyte_os) with some small changes
-
-v02:
-v03:
-v04:
-v05:
-v06:
+I've recreated it from scratch from v07, so v06 and v07 are basically another project.
