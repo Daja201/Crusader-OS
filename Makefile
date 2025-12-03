@@ -1,67 +1,64 @@
-include build_scripts/config.mk
+# compilers
+NASM = nasm
+CC   = gcc
+LD   = ld
+GENISO = genisoimage
 
-.PHONY: all floppy_image kernel bootloader clean always tools_fat
+# flags
+NASM_FLAGS = -f elf32
+CFLAGS = -m32 -ffreestanding -c
+LD_FLAGS = -m elf_i386 -T link.ld
 
-all: floppy_image tools_fat
+# files
+ASM = loader.s
+C_SRC = kernel.c vga.c klog.c
+OBJ = loader.o kernel.o vga.o klog.o
+KERNEL = kernel.elf
+ISO_DIR = iso
+GRUB_DIR = $(ISO_DIR)/boot/grub
+STAGE2 = ./stage2_eltorito
+ISO = os.iso
+MENU = ./menu.lst
 
-include build_scripts/toolchain.mk
+# main target
+all: $(ISO)
 
-#
-# Floppy image
-#
-floppy_image: $(BUILD_DIR)/main_floppy.img
+# compile assembly
+loader.o: loader.s
+	$(NASM) $(NASM_FLAGS) loader.s -o loader.o
 
-$(BUILD_DIR)/main_floppy.img: bootloader kernel
-	@dd if=/dev/zero of=$@ bs=512 count=2880 >/dev/null
-	@mkfs.fat -F 12 -n "NBOS" $@ >/dev/null
-	@dd if=$(BUILD_DIR)/stage1.bin of=$@ conv=notrunc >/dev/null
-	@mcopy -i $@ $(BUILD_DIR)/stage2.bin "::stage2.bin"
-	@mcopy -i $@ $(BUILD_DIR)/kernel.bin "::kernel.bin"
-	@mmd -i $@ "::mydir"
-	@echo "--> Created: " $@
+# compile C sources
+kernel.o: kernel.c
+	$(CC) $(CFLAGS) kernel.c -o kernel.o
 
-#
-# Bootloader
-#
-bootloader: stage1 stage2
+vga.o: vga.c
+	$(CC) $(CFLAGS) vga.c -o vga.o
 
-stage1: $(BUILD_DIR)/stage1.bin
+klog.o: klog.c
+	$(CC) $(CFLAGS) klog.c -o klog.o
 
-$(BUILD_DIR)/stage1.bin: always
-	@$(MAKE) -C src/bootloader/stage1 BUILD_DIR=$(abspath $(BUILD_DIR))
+# link kernel
+kernel.elf: $(OBJ)
+	$(LD) $(LD_FLAGS) $(OBJ) -o $(KERNEL)
 
-stage2: $(BUILD_DIR)/stage2.bin
+# build ISO
+$(ISO): $(KERNEL)
+	mkdir -p $(GRUB_DIR)
+	cp $(STAGE2) $(GRUB_DIR)/
+	cp $(MENU) $(GRUB_DIR)/
+	cp $(KERNEL) $(ISO_DIR)/boot/
 
-$(BUILD_DIR)/stage2.bin: always
-	@$(MAKE) -C src/bootloader/stage2 BUILD_DIR=$(abspath $(BUILD_DIR))
+	$(GENISO) -R \
+	 -b boot/grub/$(notdir $(STAGE2)) \
+	 -no-emul-boot \
+	 -boot-load-size 4 \
+	 -A os \
+	 -input-charset utf8 \
+	 -quiet \
+	 -boot-info-table \
+	 -o $(ISO) $(ISO_DIR)
 
-#
-# Kernel
-#
-kernel: $(BUILD_DIR)/kernel.bin
-
-$(BUILD_DIR)/kernel.bin: always
-	@$(MAKE) -C src/kernel BUILD_DIR=$(abspath $(BUILD_DIR))
-
-#
-# Tools
-#
-tools_fat: $(BUILD_DIR)/tools/fat
-$(BUILD_DIR)/tools/fat: always tools/fat/fat.c
-	@mkdir -p $(BUILD_DIR)/tools
-	@$(MAKE) -C tools/fat BUILD_DIR=$(abspath $(BUILD_DIR))
-
-#
-# Always
-#
-always:
-	@mkdir -p $(BUILD_DIR)
-
-#
-# Clean
-#
+# clean
 clean:
-	@$(MAKE) -C src/bootloader/stage1 BUILD_DIR=$(abspath $(BUILD_DIR)) clean
-	@$(MAKE) -C src/bootloader/stage2 BUILD_DIR=$(abspath $(BUILD_DIR)) clean
-	@$(MAKE) -C src/kernel BUILD_DIR=$(abspath $(BUILD_DIR)) clean
-	@rm -rf $(BUILD_DIR)/*
+	rm -f *.o $(KERNEL) $(ISO)
+	rm -rf $(ISO_DIR)
