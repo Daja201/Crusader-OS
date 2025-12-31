@@ -1,4 +1,4 @@
-# Crusader-OS
+# JUST AN OLD COPY OF Crusader-OS
 Operating system based on nanobyte's yt tutorials "How to make an operating system". 
 
 I used these packages on Debian:
