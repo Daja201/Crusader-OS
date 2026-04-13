@@ -1,13 +1,11 @@
-# JUST AN OLD COPY OF Crusader-OS
+# Crusader-OS
 Operating system based on nanobyte's yt tutorials "How to make an operating system". 
 
-I used these packages on Debian:
-  sudo apt install build-essential libgmp3-dev libmpc-dev libmpfr-dev texinfo mtools dosfstools libguestfs-tools qemu-system-x86
-    (copied from nanobyteOS repository, may cointain more or less packages then needed)
 
-I personally use qemu for emulation i686 processor:
-  qemu-system-i386 -fda build/main_floppy.img
+Use this on Debian:
+sudo apt install build-essential libgmp3-dev libmpc-dev libmpfr-dev texinfo wget nasm mtools python3 python3-pip python3-parted scons dosfstools libguestfs-tools qemu-system-x86
 
-You need to make your own i686 cross compiler, or use some existing one like OpenWatcomV2 (im using some random precompiled from git but you can make your own)
+(copied from nanobyteOS repository, may cointain more or less packages then needed)
 
-I've recreated it from scratch from v07, so v06 and v07 are basically another project.
+
+You need to make your own i686 cross compiler, or use some existing one (im using some random precompiled from git but you can make your own)
